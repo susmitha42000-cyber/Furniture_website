@@ -617,6 +617,29 @@ function enforceAuthPageAccess() {
   return true;
 }
 
+const ROLE_DASHBOARD_CONFIG = {
+  admin: {
+    label: 'Admin',
+    eyebrow: 'Admin dashboard',
+    title: `${APP.siteName} admin overview`,
+    description: 'Manage products, categories, customers, and orders from one complete furniture dashboard.',
+    defaultView: 'dashboard',
+    views: ['dashboard', 'main-category', 'category', 'product', 'customer-management', 'order-management', 'refund-cancellation'],
+  },
+  user: {
+    label: 'User',
+    eyebrow: 'User dashboard',
+    title: `${APP.siteName} customer overview`,
+    description: 'See your saved furniture, orders, and account activity in a simpler personal dashboard.',
+    defaultView: 'customer-management',
+    views: ['customer-management', 'order-management', 'review-rating', 'help-support'],
+  },
+};
+
+function getRoleConfig(role) {
+  return ROLE_DASHBOARD_CONFIG[role] || ROLE_DASHBOARD_CONFIG.admin;
+}
+
 function bindForms() {
   ['newsletterForm', 'footerNewsletterForm'].forEach((id) => {
     const form = document.getElementById(id);
@@ -664,7 +687,7 @@ function bindForms() {
         return;
       }
       if (!validateForm(loginForm)) {
-        showToast('Use a valid email and a password with at least 8 characters, including letters and numbers.', 'error');
+        showToast('Use a valid email, choose a furniture role, and enter a password with at least 8 characters including letters and numbers.', 'error');
         return;
       }
       if (submitButton) {
@@ -673,14 +696,18 @@ function bindForms() {
       }
       if (submitLabel) submitLabel.textContent = 'Logging in...';
       const email = loginForm.querySelector('[name="email"]')?.value.trim() || '';
+      const role = loginForm.querySelector('[name="role"]')?.value || 'user';
+      const roleConfig = getRoleConfig(role);
       setAuthUser({
         email,
         name: email.split('@')[0] || 'Guest',
+        role,
+        roleLabel: roleConfig.label,
         loggedInAt: new Date().toISOString(),
       });
       showToast('Login successful.', 'success');
       setTimeout(() => {
-        window.location.replace(`${APP.root}/pages/dashboard.html`);
+        window.location.replace(`${APP.root}/pages/dashboard.html?view=${encodeURIComponent(roleConfig.defaultView)}`);
       }, 400);
     });
   }
@@ -788,6 +815,7 @@ function startCounters() {
 let currentDashboardView = 'dashboard';
 
 function getDashboardContext(user) {
+  const roleConfig = getRoleConfig(user.role);
   const displayName = user.name
     .split(/[\s._-]+/)
     .filter(Boolean)
@@ -820,6 +848,7 @@ function getDashboardContext(user) {
 
   return {
     user,
+    roleConfig,
     displayName: displayName || 'Guest',
     initials: (displayName || user.name || 'G')
       .split(' ')
@@ -846,7 +875,7 @@ function getDashboardContext(user) {
   };
 }
 
-function renderDashboardNav(view) {
+function renderDashboardNav(view, roleConfig) {
   const items = [
     { key: 'dashboard', icon: 'ri-dashboard-line', label: 'Dashboard' },
     { key: 'main-category', icon: 'ri-stack-line', label: 'Main Category' },
@@ -862,7 +891,9 @@ function renderDashboardNav(view) {
     { key: 'cms', icon: 'ri-window-line', label: 'CMS' },
   ];
 
-  return items.map((item) => `
+  return items
+    .filter((item) => roleConfig.views.includes(item.key))
+    .map((item) => `
     <button class="${view === item.key ? 'is-active' : ''}" type="button" data-dashboard-view="${item.key}" aria-current="${view === item.key ? 'page' : 'false'}">
       <i class="${item.icon}"></i>
       <span>${item.label}</span>
@@ -870,13 +901,13 @@ function renderDashboardNav(view) {
   `).join('');
 }
 
-function renderDashboardTopbar() {
+function renderDashboardTopbar(context) {
   return `
     <div class="dashboard-studio-topbar scroll-reveal">
       <div class="dashboard-studio-topbar-copy">
-        <span class="eyebrow">Design dashboard</span>
-        <h1>${APP.siteName} studio overview</h1>
-        <p>Track curated pieces, client activity, and collection performance in one calm workspace.</p>
+        <span class="eyebrow">${escapeHtml(context.roleConfig.eyebrow)}</span>
+        <h1>${escapeHtml(context.roleConfig.title)}</h1>
+        <p>${escapeHtml(context.roleConfig.description)}</p>
       </div>
       <div class="dashboard-studio-topbar-actions">
         <label class="dashboard-studio-search" aria-label="Search dashboard">
@@ -1409,8 +1440,10 @@ function renderDashboardPage(view = currentDashboardView) {
 
   const target = document.getElementById('dashboardView');
   if (!target) return;
-  currentDashboardView = view;
   const context = getDashboardContext(user);
+  const requestedView = getQueryParam('view') || view;
+  const allowedViews = context.roleConfig.views;
+  currentDashboardView = allowedViews.includes(requestedView) ? requestedView : context.roleConfig.defaultView;
 
   target.innerHTML = `
     <section class="section dashboard-studio-section">
@@ -1425,16 +1458,17 @@ function renderDashboardPage(view = currentDashboardView) {
             <div class="dashboard-studio-profile">
               <div class="dashboard-studio-avatar">${context.initials}</div>
               <strong>${escapeHtml(context.displayName)}</strong>
+              <span>${escapeHtml(context.user.roleLabel || context.roleConfig.label)}</span>
               <span>${escapeHtml(context.user.email || 'myangelagray@gmail.com')}</span>
             </div>
             <nav class="dashboard-studio-nav">
-              ${renderDashboardNav(view)}
+              ${renderDashboardNav(currentDashboardView, context.roleConfig)}
             </nav>
           </aside>
 
           <div class="dashboard-studio-main">
-            ${renderDashboardTopbar()}
-            ${renderDashboardView(view, context)}
+            ${renderDashboardTopbar(context)}
+            ${renderDashboardView(currentDashboardView, context)}
           </div>
         </div>
       </div>
