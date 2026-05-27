@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop Lunera's Scandinavian furniture collection with search, filters, and cart support.">
+  <title>Shop | Lunera Furniture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+</head>
+<body data-page="shop">
+  <div id="siteHeader"></div>
+
+  <main class="page-main">
+    <section class="page-banner shop-banner">
+      <div class="container scroll-reveal">
+        <span class="eyebrow">Shop</span>
+        <h1>Scandinavian furniture curated for calm modern homes</h1>
+        <p>Search the collection, explore room categories, and discover timeless pieces with warm natural character.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container shop-shell">
+        <div class="shop-content">
+          <div class="shop-toolbar scroll-reveal">
+            <p id="shopResultsMeta">Loading collection...</p>
+            <div class="shop-toolbar-actions">
+              <select id="shopSort" class="select-field">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price low to high</option>
+                <option value="price-desc">Price high to low</option>
+                <option value="rating">Highest rated</option>
+              </select>
+            </div>
+          </div>
+          <div id="shopGrid" class="product-grid"></div>
+          <div id="shopPagination" class="pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="container">
+        <div class="section-heading center scroll-reveal">
+          <span class="eyebrow">Why shop Lunera</span>
+          <h2>Furniture chosen for real rooms and everyday ease</h2>
+          <p>Every collection balances tactile comfort, long-term quality, and a quieter visual mood that works across modern homes.</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card scroll-reveal">
+            <i class="ri-home-heart-line"></i>
+            <h3>Room-first curation</h3>
+            <p>Pieces selected to feel harmonious in living rooms, bedrooms, dining spaces, and calm multi-use interiors.</p>
+          </article>
+          <article class="value-card scroll-reveal">
+            <i class="ri-sofa-line"></i>
+            <h3>Comfort-led forms</h3>
+            <p>Soft upholstery, balanced scale, and warm finishes designed to feel beautiful and livable every day.</p>
+          </article>
+          <article class="value-card scroll-reveal">
+            <i class="ri-shield-check-line"></i>
+            <h3>Enduring quality</h3>
+            <p>Materials and silhouettes chosen for longevity so your home feels collected rather than constantly replaced.</p>
+          </article>
+          <article class="value-card scroll-reveal">
+            <i class="ri-palette-line"></i>
+            <h3>Easy styling</h3>
+            <p>Neutral palettes, gentle textures, and timeless shapes that layer naturally into calmer interior stories.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container best-seller-layout">
+        <div class="best-seller-media scroll-reveal">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" alt="Curated Scandinavian living room" loading="lazy">
+        </div>
+        <div class="best-seller-copy scroll-reveal">
+          <span class="eyebrow">Shopping guidance</span>
+          <h2>Start with one anchor piece, then build the room around it</h2>
+          <p>
+            Whether you begin with a sofa, dining table, or lounge chair, our collections are designed
+            to help you layer complementary materials and quieter accents with confidence.
+          </p>
+          <div class="best-seller-points">
+            <div><strong>Choose the focal point</strong><span>Start with the piece that sets the mood and proportions of the room.</span></div>
+            <div><strong>Layer texture softly</strong><span>Mix boucle, oak, linen, and matte finishes for warmth without visual noise.</span></div>
+            <div><strong>Keep the palette calm</strong><span>Use warm neutrals and natural tones to make the furniture feel timeless.</span></div>
+          </div>
+          <a href="404.html" class="button button-primary">Get Styling Help</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section newsletter-section">
+      <div class="container">
+        <div class="newsletter-panel scroll-reveal">
+          <div>
+            <span class="eyebrow">Shopping notes</span>
+            <h2>Get new arrivals and curated edits before they sell through</h2>
+            <p>Join our newsletter for room inspiration, seasonal launches, and calm Scandinavian furniture picks.</p>
+          </div>
+          <form id="newsletterForm" class="newsletter-form" novalidate>
+            <label class="visually-hidden" for="shopNewsletterEmail">Email address</label>
+            <input id="shopNewsletterEmail" type="email" name="email" class="input-field" placeholder="Enter your email address" required>
+            <button type="submit" class="button button-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

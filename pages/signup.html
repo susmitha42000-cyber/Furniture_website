@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create your Lunera furniture account.">
+  <title>Signup | Lunera Furniture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+</head>
+<body data-page="signup">
+  <main class="auth-main">
+    <section class="auth-shell">
+      <div class="auth-showcase auth-showcase-signup scroll-reveal">
+        <form id="signupForm" class="auth-card" novalidate>
+          <span class="eyebrow">Join Stackly</span>
+          <h1>Create your account</h1>
+          <p>Save favorites, track orders, and build your dream home room by room.</p>
+          <div class="auth-form-panel auth-form-panel-signup">
+            <div class="field-stack">
+              <label class="form-label" for="signupName">Full Name</label>
+              <input id="signupName" class="input-field" type="text" name="name" placeholder="Full Name" required>
+            </div>
+            <div class="field-stack">
+              <label class="form-label" for="signupEmail">Email Address</label>
+              <input id="signupEmail" class="input-field" type="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="field-stack">
+              <label class="form-label" for="signupPassword">Password</label>
+              <div class="password-field">
+                <input id="signupPassword" class="input-field" type="password" name="password" placeholder="Password" required minlength="8" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" title="Use at least 8 characters with letters and numbers.">
+                <button class="password-toggle" type="button" data-password-toggle aria-label="Show password" aria-pressed="false">
+                  <i class="ri-eye-line" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <div class="field-stack">
+              <label class="form-label" for="signupConfirmPassword">Confirm Password</label>
+              <div class="password-field">
+                <input id="signupConfirmPassword" class="input-field" type="password" name="confirmPassword" placeholder="Confirm Password" required minlength="8" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" title="Use at least 8 characters with letters and numbers.">
+                <button class="password-toggle" type="button" data-password-toggle aria-label="Show password" aria-pressed="false">
+                  <i class="ri-eye-line" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <button type="submit" class="button button-primary">Create account</button>
+          </div>
+          <div class="auth-social-row" aria-label="Social media links">
+            <a class="icon-button" href="404.html" aria-label="Facebook"><i class="ri-facebook-circle-line"></i></a>
+            <a class="icon-button" href="404.html" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+            <a class="icon-button" href="404.html" aria-label="Pinterest"><i class="ri-pinterest-line"></i></a>
+            <a class="icon-button" href="404.html" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+          </div>
+          <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
+        </form>
+        <aside class="auth-visual auth-visual-signup" aria-hidden="true">
+          <img src="../assets/images/about_hero_section_img.webp" alt="">
+          <div class="auth-visual-copy">
+            <h2>Make Over Your Room Gain More Comfort</h2>
+            <p>Thoughtful furniture for a calmer, more beautiful home.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <div id="toastStack" class="toast-stack"></div>
+  <script src="../js/utils.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly is a premium Scandinavian furniture website with timeless interiors, warm wood textures, and luxury modern styling.">
+  <meta name="keywords" content="Scandinavian furniture, luxury interiors, modern furniture, Stackly furniture, timeless furniture">
+  <title>Stackly | Furniture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+</head>
+<body data-page="home">
+  <div id="siteHeader"></div>
+
+  <main>
+    <section class="hero-home" id="heroHome" aria-label="Featured furniture collections">
+      <div class="hero-slides" aria-live="polite">
+        <article class="hero-slide is-active" data-hero-slide style="--hero-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80');">
+          <div class="hero-overlay"></div>
+          <div class="container hero-home-inner">
+            <div class="hero-home-top">
+              <div class="hero-home-copy">
+                <h1>Furnish your space with timeless furniture</h1>
+                <p>
+                  Bring calm warmth, natural wood, and refined silhouettes into your home with
+                  collectible pieces designed for modern everyday living.
+                </p>
+                <div class="hero-actions">
+                  <a href="pages/404.html" class="button button-primary">Explore Collection</a>
+                  <a href="pages/404.html" class="button button-secondary">Our Story</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="hero-slide" data-hero-slide style="--hero-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=80');">
+          <div class="hero-overlay"></div>
+          <div class="container hero-home-inner">
+            <div class="hero-home-top">
+              <div class="hero-home-copy">
+                <span class="eyebrow">Curated new arrivals</span>
+                <h1>Carousel-worthy pieces for softer, warmer interiors</h1>
+                <p>
+                  Layer sculptural chairs, muted wood, and elevated textures into a home that
+                  feels calm, refined, and quietly luxurious.
+                </p>
+                <div class="hero-actions">
+                  <a href="pages/404.html" class="button button-primary">Shop New Arrivals</a>
+                  <a href="pages/404.html" class="button button-secondary">Design Services</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="hero-slide" data-hero-slide style="--hero-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1600&q=80');">
+          <div class="hero-overlay"></div>
+          <div class="container hero-home-inner">
+            <div class="hero-home-top">
+              <div class="hero-home-copy">
+                <span class="eyebrow">Crafted details</span>
+                <h1>Designed to make every room feel collected and calm</h1>
+                <p>
+                  Hand-finished oak, plush upholstery, and balanced forms create a home story
+                  that feels thoughtful from morning light to evening glow.
+                </p>
+                <div class="hero-actions">
+                  <a href="pages/404.html" class="button button-primary">View Inspiration</a>
+                  <a href="pages/404.html" class="button button-secondary">Book Consultation</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="hero-slide" data-hero-slide style="--hero-image: url('https://images.unsplash.com/photo-1505693416388-c112c1c0b5a8?auto=format&fit=crop&w=1600&q=80');">
+          <div class="hero-overlay"></div>
+          <div class="container hero-home-inner">
+            <div class="hero-home-top">
+              <div class="hero-home-copy">
+                <span class="eyebrow">Signature lounge edit</span>
+                <h1>Animated hero moments with inviting natural textures</h1>
+                <p>
+                  Let the hero glide through premium lounge scenes that spotlight Stackly's most
+                  loved wood tones, curves, and tactile comfort.
+                </p>
+                <div class="hero-actions">
+                  <a href="pages/404.html" class="button button-primary">View Best Seller</a>
+                  <a href="pages/404.html" class="button button-secondary">Browse Bedroom</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="container hero-slider-ui">
+        <div class="hero-slider-controls" aria-label="Hero slider controls">
+          <button class="hero-slider-button" type="button" id="heroPrevButton" aria-label="Previous slide">
+            <i class="ri-arrow-left-line"></i>
+          </button>
+          <div class="hero-slider-dots" id="heroSliderDots"></div>
+          <button class="hero-slider-button" type="button" id="heroNextButton" aria-label="Next slide">
+            <i class="ri-arrow-right-line"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-heading center scroll-reveal">
+          <span class="eyebrow">Featured categories</span>
+          <h2>Curated furniture for every room</h2>
+          <p>Thoughtfully selected collections that keep interiors balanced, warm, and beautifully functional.</p>
+        </div>
+        <div class="category-grid" id="homeCategories"></div>
+      </div>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="container">
+        <div class="section-heading row scroll-reveal">
+          <div>
+            <span class="eyebrow">Trending products</span>
+            <h2>Modern pieces with quiet presence</h2>
+          </div>
+        </div>
+        <div class="product-grid" id="featuredGrid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading center scroll-reveal">
+          <span class="eyebrow">Why choose Stackly</span>
+          <h2>Crafted for beautiful everyday rituals</h2>
+        </div>
+        <div class="value-grid">
+          <article class="value-card scroll-reveal">
+            <i class="ri-award-line"></i>
+            <h3>Premium quality</h3>
+            <p>Carefully finished furniture built from enduring materials and elegant details.</p>
+          </article>
+          <article class="value-card scroll-reveal">
+            <i class="ri-leaf-line"></i>
+            <h3>Sustainable materials</h3>
+            <p>Responsible wood sourcing, natural fibers, and long-lasting craftsmanship.</p>
+          </article>
+          <article class="value-card scroll-reveal">
+            <i class="ri-truck-line"></i>
+            <h3>Free delivery</h3>
+            <p>Complimentary delivery on eligible orders with thoughtful white-glove care.</p>
+          </article><!--  -->
+          <article class="value-card scroll-reveal">
+            <i class="ri-hammer-line"></i>
+            <h3>Modern craftsmanship</h3>
+            <p>Clean Scandinavian lines paired with refined joinery and soft natural textures.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container best-seller-layout">
+        <div class="best-seller-media scroll-reveal">
+          <img src="assets/images/Best_seller_collection.webp" alt="Best seller Scandinavian furniture vignette" loading="lazy">
+        </div>
+        <div class="best-seller-copy scroll-reveal">
+          <span class="eyebrow">Best seller collection</span>
+          <h2>Signature wood tones with a lighter, softer interior mood</h2>
+          <p>
+            Our most-loved collection pairs natural timber, boucle seating, and sculptural
+            lighting in a balanced edit inspired by luxurious Scandinavian homes.
+          </p>
+          <div class="best-seller-points">
+            <div><strong>Natural oak</strong><span>Warm grains and hand-finished surfaces.</span></div>
+            <div><strong>Quiet comfort</strong><span>Soft upholstery designed for daily ease.</span></div>
+            <div><strong>Layered styling</strong><span>Pieces that work beautifully together.</span></div>
+          </div>
+          <a href="pages/404.html" class="button button-primary">View best seller</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="container">
+        <div class="section-heading center scroll-reveal">
+          <span class="eyebrow">Testimonials</span>
+          <h2>What our clients say</h2>
+        </div>
+        <div class="testimonial-slider" id="testimonialSlider">
+          <button class="slider-arrow prev" type="button" onclick="moveTestimonial(-1)" aria-label="Previous testimonial">
+            <i class="ri-arrow-left-line"></i>
+          </button>
+          <div class="testimonial-track" id="testimonialTrack"></div>
+          <button class="slider-arrow next" type="button" onclick="moveTestimonial(1)" aria-label="Next testimonial">
+            <i class="ri-arrow-right-line"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-heading row scroll-reveal">
+          <div>
+            <span class="eyebrow">Latest blog</span>
+            <h2>Interior inspiration and thoughtful living</h2>
+          </div>
+        </div>
+        <div class="blog-grid" id="blogPreviewGrid"></div>
+      </div>
+    </section>
+
+    <section class="section newsletter-section">
+      <div class="container">
+        <div class="newsletter-panel scroll-reveal">
+          <div>
+            <span class="eyebrow">Newsletter</span>
+            <h2>Get furniture drops and interior inspiration delivered beautifully</h2>
+            <p>Subscribe for styling edits, new arrivals, and limited seasonal releases.</p>
+          </div>
+          <form id="newsletterForm" class="newsletter-form" novalidate>
+            <label class="visually-hidden" for="homeNewsletterEmail">Email address</label>
+            <input id="homeNewsletterEmail" type="email" name="email" class="input-field" placeholder="Enter your email address" required>
+            <button type="submit" class="button button-primary">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/products.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

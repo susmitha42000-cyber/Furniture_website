@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Lunera for consultations, custom furniture, and support.">
+  <title>Contact Us | Lunera Furniture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+</head>
+<body data-page="contact">
+  <div id="siteHeader"></div>
+
+  <main class="page-main">
+    <section class="page-banner contact-banner">
+      <div class="container scroll-reveal">
+        <span class="eyebrow">Contact us</span>
+        <h1>Talk to our furniture and styling team</h1>
+        <p>We’re here to help with consultations, custom design questions, deliveries, and product guidance.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-layout">
+        <div class="contact-info-stack">
+          <article class="contact-card contact-card-rich scroll-reveal"><i class="ri-phone-line"></i><h2>Call</h2><p>+1 (212) 555-0198</p><span>Speak with our styling and product support team.</span></article>
+          <article class="contact-card contact-card-rich scroll-reveal"><i class="ri-mail-line"></i><h2>Email</h2><p>hello@lunera-interiors.com</p><span>Share your room goals, questions, or product shortlist.</span></article>
+          <article class="contact-card contact-card-rich scroll-reveal"><i class="ri-map-pin-line"></i><h2>Studio</h2><p>182 Mercer Street, New York, NY</p><span>Visit our space for materials, finishes, and furniture inspiration.</span></article>
+          <article class="contact-card contact-card-rich scroll-reveal"><i class="ri-time-line"></i><h2>Hours</h2><p>Mon - Sat, 9:00 AM to 6:00 PM</p><span>Appointments and showroom visits available throughout the week.</span></article>
+        </div>
+
+        <form id="contactForm" class="contact-form contact-form-rich scroll-reveal" novalidate>
+          <span class="eyebrow">Start your project</span>
+          <h2>Send a message</h2>
+          <p>Tell us about your room, furniture needs, or styling direction and our team will guide you with clarity.</p>
+          <div class="form-grid">
+            <label class="visually-hidden" for="contactName">Your name</label>
+            <input id="contactName" class="input-field" type="text" name="name" placeholder="Your name" required>
+            <label class="visually-hidden" for="contactEmail">Email address</label>
+            <input id="contactEmail" class="input-field" type="email" name="email" placeholder="Email address" required>
+            <label class="visually-hidden" for="contactPhone">Phone number</label>
+            <input id="contactPhone" class="input-field" type="tel" name="phone" placeholder="Phone number" required>
+            <label class="visually-hidden" for="contactSubject">Subject</label>
+            <input id="contactSubject" class="input-field" type="text" name="subject" placeholder="Subject" required>
+          </div>
+          <label class="visually-hidden" for="contactMessage">Tell us about your project</label>
+          <textarea id="contactMessage" class="input-field textarea-field" name="message" rows="6" placeholder="Tell us about your project" required></textarea>
+          <button type="submit" class="button button-primary">Send message</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section section-tinted">
+      <div class="container map-faq-layout">
+        <div class="map-card contact-map-rich scroll-reveal">
+          <iframe
+            title="Lunera showroom map"
+            src="https://www.google.com/maps?q=Mercer%20Street%20New%20York&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="faq-card contact-faq-rich scroll-reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Helpful answers before you visit</h2>
+          <div id="faqAccordion" class="faq-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

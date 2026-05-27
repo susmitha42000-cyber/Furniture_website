@@ -1,0 +1,106 @@
+@keyframes loaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseWish {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes driftCard {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.loader-ring {
+  animation: loaderSpin 0.9s linear infinite;
+}
+
+.hero-slide.is-active .hero-home-copy {
+  animation: fadeSlide 0.9s ease both;
+}
+
+.value-card,
+.service-card,
+.blog-card,
+.product-card,
+.testimonial-card {
+  animation: fadeSlide 0.5s ease both;
+}
+
+.best-seller-media img,
+.image-card img {
+  animation: floatSoft 6s ease-in-out infinite;
+}
+
+.wishlist-toggle.is-active {
+  animation: pulseWish 0.35s ease;
+}
+
+.contact-card-rich:nth-child(1) {
+  animation: fadeSlide 0.55s ease both, driftCard 6s ease-in-out 0.3s infinite;
+}
+
+.contact-card-rich:nth-child(2) {
+  animation: fadeSlide 0.55s ease both, driftCard 6.5s ease-in-out 0.6s infinite;
+}
+
+.contact-card-rich:nth-child(3) {
+  animation: fadeSlide 0.55s ease both, driftCard 6.8s ease-in-out 0.9s infinite;
+}
+
+.contact-card-rich:nth-child(4) {
+  animation: fadeSlide 0.55s ease both, driftCard 7.2s ease-in-out 1.2s infinite;
+}
+
+.contact-form-rich {
+  animation: fadeSlide 0.75s ease both;
+}
+
+.contact-map-rich iframe {
+  animation: floatSoft 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

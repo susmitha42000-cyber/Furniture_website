@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login to your Stackly furniture account.">
+  <title>Login | Stackly Furniture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+</head>
+<body data-page="login">
+  <main class="auth-main">
+    <section class="auth-shell">
+      <div class="auth-showcase scroll-reveal">
+        <form id="loginForm" class="auth-card" novalidate autocomplete="off" data-form-start="">
+          <span class="eyebrow">Welcome Back</span>
+          <h1>Login to Stackly</h1>
+          <p>Access your saved pieces, cart, and tailored interior recommendations.</p>
+          <div class="auth-form-panel">
+            <div class="field-stack">
+              <label class="form-label" for="loginEmail">Email Address</label>
+              <input id="loginEmail" class="input-field" type="email" name="email" placeholder="Email Address" required autocomplete="off" autocapitalize="off" spellcheck="false" readonly onfocus="this.removeAttribute('readonly');">
+            </div>
+            <div class="field-stack">
+              <label class="form-label" for="loginPassword">Password</label>
+              <div class="password-field">
+                <input id="loginPassword" class="input-field" type="password" name="password" placeholder="Password" required minlength="8" pattern="(?=.*[A-Za-z])(?=.*\d).{8,}" title="Use at least 8 characters with letters and numbers." autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');">
+                <button class="password-toggle" type="button" data-password-toggle aria-label="Show password" aria-pressed="false">
+                  <i class="ri-eye-line" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <div class="auth-form-meta">
+              <a class="auth-forgot-link" href="404.html">Forgot Password?</a>
+            </div>
+            <div class="field-stack honeypot-field" aria-hidden="true">
+              <label class="form-label" for="loginWebsite">Website</label>
+              <input id="loginWebsite" class="input-field" type="text" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <p class="auth-security-note">Protected by a basic anti-bot check.</p>
+            <button type="submit" class="button button-primary" data-login-submit>
+              <span class="button-label">Login</span>
+            </button>
+          </div>
+          <div class="auth-social-row" aria-label="Social media links">
+            <a class="icon-button" href="404.html" aria-label="Facebook"><i class="ri-facebook-circle-line"></i></a>
+            <a class="icon-button" href="404.html" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+            <a class="icon-button" href="404.html" aria-label="Pinterest"><i class="ri-pinterest-line"></i></a>
+            <a class="icon-button" href="404.html" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+          </div>
+          <p class="auth-switch">Don&apos;t have an account? <a href="signup.html">Create one</a></p>
+        </form>
+        <aside class="auth-visual" aria-hidden="true">
+          <img src="../assets/images/Hero_section_img.webp" alt="">
+        </aside>
+      </div>
+    </section>
+  </main>
+  <div id="toastStack" class="toast-stack"></div>
+  <script src="../js/utils.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/products.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
