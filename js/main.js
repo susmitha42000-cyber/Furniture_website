@@ -91,7 +91,7 @@ function renderShell() {
                 <span class="count-badge" id="cartCount">0</span>
               </button>
               <div class="auth-links">
-                <a class="auth-link" href="${APP.root}/pages/login.html">Login</a>
+                <a class="auth-link" href="${APP.root}/pages/login.html" data-login-loader-link>Login</a>
                 <a class="auth-link signup" href="${APP.root}/pages/signup.html">Signup</a>
               </div>
               <button class="menu-toggle" type="button" id="menuToggle" aria-label="Open menu">
@@ -105,7 +105,7 @@ function renderShell() {
       <aside class="mobile-menu" id="mobileMenu">
         <nav>
           ${links.map((link) => `<a class="${page === link.key ? 'is-active' : ''}" href="${link.href}">${link.label}</a>`).join('')}
-          <a href="${APP.root}/pages/login.html">Login</a>
+          <a href="${APP.root}/pages/login.html" data-login-loader-link>Login</a>
           <a href="${APP.root}/pages/signup.html">Signup</a>
           <a href="${APP.root}/pages/wishlist.html">Wishlist</a>
           <a href="${APP.root}/pages/cart.html">Cart</a>
@@ -288,6 +288,35 @@ function setupLoader() {
   if (!loader) return;
   window.addEventListener('load', () => {
     setTimeout(() => loader.classList.add('is-hidden'), 320);
+  });
+}
+
+function showLoaderThenNavigate(href, delay = 2000, replace = false) {
+  const loader = document.getElementById('siteLoader');
+  if (loader) {
+    loader.classList.remove('is-hidden');
+    loader.setAttribute('aria-hidden', 'false');
+  }
+  window.setTimeout(() => {
+    if (replace) {
+      window.location.replace(href);
+      return;
+    }
+    window.location.href = href;
+  }, delay);
+}
+
+function bindLoaderLinks() {
+  document.querySelectorAll('[data-loader-link], [data-login-loader-link]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+      event.preventDefault();
+      if (link.dataset.loaderLoading === 'true') return;
+      link.dataset.loaderLoading = 'true';
+      link.setAttribute('aria-disabled', 'true');
+      const delay = Number(link.dataset.loaderDelay || 2000);
+      showLoaderThenNavigate(link.href, delay);
+    });
   });
 }
 
@@ -519,6 +548,7 @@ function setupHeroSlider() {
 function clearFieldError(field) {
   field.classList.remove('field-error');
   field.removeAttribute('aria-invalid');
+  field.removeAttribute('aria-describedby');
   const container = field.closest('.password-field') || field.parentElement;
   const message = container?.parentElement?.querySelector(`.field-error-message[data-error-for="${field.name}"]`)
     || container?.querySelector(`.field-error-message[data-error-for="${field.name}"]`);
@@ -530,8 +560,13 @@ function showFieldError(field, message) {
   field.classList.add('field-error');
   field.setAttribute('aria-invalid', 'true');
   const error = document.createElement('p');
+  const errorId = `${field.id || field.name}-error`;
+  field.setAttribute('aria-describedby', errorId);
+  error.id = errorId;
   error.className = 'field-error-message';
   error.dataset.errorFor = field.name;
+  error.setAttribute('role', 'alert');
+  error.setAttribute('aria-live', 'polite');
   error.textContent = message;
   const container = field.closest('.password-field');
   if (container) {
@@ -693,6 +728,7 @@ function bindForms() {
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.classList.add('is-loading');
+        submitButton.setAttribute('aria-busy', 'true');
       }
       if (submitLabel) submitLabel.textContent = 'Logging in...';
       const email = loginForm.querySelector('[name="email"]')?.value.trim() || '';
@@ -706,9 +742,7 @@ function bindForms() {
         loggedInAt: new Date().toISOString(),
       });
       showToast('Login successful.', 'success');
-      setTimeout(() => {
-        window.location.replace(`${APP.root}/pages/dashboard.html?view=${encodeURIComponent(roleConfig.defaultView)}`);
-      }, 400);
+      showLoaderThenNavigate(`${APP.root}/pages/dashboard.html?view=${encodeURIComponent(roleConfig.defaultView)}`, 2000, true);
     });
   }
 
@@ -723,9 +757,7 @@ function bindForms() {
       }
       signupForm.reset();
       showToast('Account created successfully.', 'success');
-      setTimeout(() => {
-        window.location.href = `${APP.root}/pages/login.html`;
-      }, 400);
+      showLoaderThenNavigate(`${APP.root}/pages/login.html`, 2000);
     });
   }
 }
@@ -1513,6 +1545,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderWishlistDrawer();
   setupMenu();
   setupHeaderScroll();
+  bindLoaderLinks();
   bindPasswordToggles();
   bindForms();
   initPage();

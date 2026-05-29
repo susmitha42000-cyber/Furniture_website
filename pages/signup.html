@@ -15,6 +15,13 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body data-page="signup">
+  <div class="site-loader" id="siteLoader" aria-hidden="true">
+    <div class="loader-mark">
+      <div class="loader-ring"></div>
+      <img class="brand-logo brand-logo-loader" src="../assets/images/logo%20stackly.webp" alt="Stackly logo">
+    </div>
+  </div>
+
   <main class="auth-main">
     <section class="auth-shell">
       <div class="auth-showcase auth-showcase-signup scroll-reveal">
@@ -57,7 +64,7 @@
             <a class="icon-button" href="404.html" aria-label="Pinterest"><i class="ri-pinterest-line"></i></a>
             <a class="icon-button" href="404.html" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
           </div>
-          <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
+          <p class="auth-switch">Already have an account? <a href="login.html" data-loader-link data-loader-delay="1000">Login</a></p>
         </form>
         <aside class="auth-visual auth-visual-signup" aria-hidden="true">
           <img src="../assets/images/about_hero_section_img.webp" alt="">

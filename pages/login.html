@@ -15,6 +15,13 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body data-page="login">
+  <div class="site-loader" id="siteLoader" aria-hidden="true">
+    <div class="loader-mark">
+      <div class="loader-ring"></div>
+      <img class="brand-logo brand-logo-loader" src="../assets/images/logo%20stackly.webp" alt="Stackly logo">
+    </div>
+  </div>
+
   <main class="auth-main">
     <section class="auth-shell">
       <div class="auth-showcase scroll-reveal">
@@ -36,6 +43,7 @@
                 </button>
               </div>
             </div>
+
             <div class="field-stack">
               <label class="form-label" for="loginRole">Choose Role</label>
               <select id="loginRole" class="input-field role-select" name="role" required>
@@ -53,6 +61,7 @@
             </div>
             <p class="auth-security-note">Protected by a basic anti-bot check.</p>
             <button type="submit" class="button button-primary" data-login-submit>
+              <span class="button-spinner" aria-hidden="true"></span>
               <span class="button-label">Login</span>
             </button>
           </div>
@@ -62,7 +71,7 @@
             <a class="icon-button" href="404.html" aria-label="Pinterest"><i class="ri-pinterest-line"></i></a>
             <a class="icon-button" href="404.html" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
           </div>
-          <p class="auth-switch">Don&apos;t have an account? <a href="signup.html">Create one</a></p>
+          <p class="auth-switch">Don&apos;t have an account? <a href="signup.html" data-loader-link data-loader-delay="1000">Create one</a></p>
         </form>
         <aside class="auth-visual" aria-hidden="true">
           <img src="../assets/images/Hero_section_img.webp" alt="">
